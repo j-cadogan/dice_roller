@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-Author : jcadogan <jcadogan@localhost>
+Author : Jaclyn Cadogan <jcadogan@localhost>
 Date   : 2021-09-28
-Purpose: Rock the Casbah
+Purpose: Create a python version of the cat command that can print
+         files line by line. Includes an optional flag that will
+         number each line.
 """
 
 import argparse
