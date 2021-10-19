@@ -37,6 +37,19 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
+    code = args.SEQ
+
+    code_base = {'A':'A', 'C':'C', 'G':'G', 'T':'T', 'U':'U', 'R':'AG',
+                 'Y':'CT', 'S':'GC', 'W':'AT', 'K':'GT', 'M':'AC',
+                 'B':'CGT', 'D':'AGT', 'H':'ACT', 'V':'ACG', 'N':'ACGT'}
+
+    for sequence in code:
+        base_str = ''
+        #print(sequence)
+        for letter in sequence:
+            #print(letter, code_base[letter])
+            base_str += base_str.join(code_base[letter])
+        print(sequence, base_str)
 
 
 # --------------------------------------------------
