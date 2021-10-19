@@ -48,7 +48,10 @@ def main():
         #print(sequence)
         for letter in sequence:
             #print(letter, code_base[letter])
-            base_str += base_str.join(code_base[letter])
+            if len(code_base[letter]) > 1:
+                base_str += base_str.join('[' + code_base[letter] + ']')
+            else:
+                base_str += base_str.join(code_base[letter])
         print(sequence, base_str)
 
 
