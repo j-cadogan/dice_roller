@@ -37,7 +37,6 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    code_input = args.SEQ
 
     '''
     code_base = {'A':'A', 'C':'C', 'G':'G', 'T':'T', 'U':'U', 'R':'AG',
@@ -69,9 +68,15 @@ def main():
                 tmp += ['[', code_base[letter], ']']
                 print(tmp.join())
     '''
-    for sequence in code_input:
-        translation = sequence.maketrans(code_base)
-        print(sequence, sequence.translate(translation))
+    for sequence in args.SEQ:
+        trans_tbl = sequence.maketrans(code_base)
+        bases = sequence.translate(trans_tbl)
+        if args.outfile.name != '<stdout>':
+            with open(args.outfile.name, 'w') as outfile:
+                print(sequence, bases, file=outfile)
+                print('Done, see output in "{}"'.format(args.outfile.name))
+        else:
+            print(sequence, bases)
 
 # --------------------------------------------------
 if __name__ == '__main__':
