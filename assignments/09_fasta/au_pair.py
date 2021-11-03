@@ -42,6 +42,7 @@ def main():
     if not os.path.isdir(args.outdir):
         os.makedirs(args.outdir)
 
+    # this feels wildly ugly and clunky
     for fh in args.file:
         basename = os.path.basename(fh.name)
         root, ext = os.path.splitext(basename)
