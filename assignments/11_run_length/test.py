@@ -1,6 +1,6 @@
 """ Tests for run.py """
 
-# pylint:disable=consider-using-with,consider-using-f-string,unspecified-encoding
+# pylint:disable=consider-using-with,unspecified-encoding
 
 import os
 import re
