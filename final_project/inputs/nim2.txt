@@ -1,0 +1,7 @@
+name:Nim, prof_bonus:4, level:9, walk_speed:30, swim_speed:30, class:cleric, subclass:grave
+str:13, dex:14, con:19, int:8, wis:20, cha:10
+wis:1, cha:1
+med:1, perc:1, rel:1, ins:1
+light:1, med:1, shields:1
+herb:1, veh_water:1
+spear, shortsword, hand_crossbow, shield
