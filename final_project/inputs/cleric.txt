@@ -1,0 +1,4 @@
+4
+str:13, dex:14, con:19, int:8, wis:20, cha:10
+wis:1, cha:1
+med:1, perc:1, rel:1, ins:1

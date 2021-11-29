@@ -1,0 +1,4 @@
+5
+str:9, dex:20, con:14, int:10, wis:8, cha:16
+dex:1, int:1
+ste:2, soh:2, dec:2, acr:1, intim:1, pers:2, sur:1
