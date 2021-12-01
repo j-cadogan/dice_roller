@@ -34,19 +34,58 @@ Lines 2, 3, and 4 should be in a dictionary-like format, with the keys being abi
 
 The values for lines 3 and 4 should either be a 1 or a 2. 1 indicates proficiency in that skill/save. 2 indicates expertise. If a skill or save isn't present, that indicates no proficiency.
 
-## Usage
 When run with no arguments, the program will produce a usage statement.
+```
+$ ./rolls.py
+usage: rolls.py [-h] [-a | -d] [-s seed] FILE STR STR
+rolls.py: error: the following arguments are required: FILE, STR, STR
+```
 
 When run with the -h or --help flag, a longer help document should be printed.
+```
+$ ./rolls.py -h
+usage: rolls.py [-h] [-a | -d] [-s seed] FILE STR STR
 
-If the file is not valid, or 
+Rock the Casbah
 
+positional arguments:
+  FILE                  .txt with character info and stats
+  STR                   What skill or ability to roll for
+  STR                   The type of roll to make (ability or save)
 
-if the input for the roll_type or roll_for arguments isn't in the list of acceptable terms, or 
+optional arguments:
+  -h, --help            show this help message and exit
+  -a, --advantage       Roll twice and take the higher number (default: False)
+  -d, --disadvantage    Roll twice and take the lower number (default: False)
+  -s seed, --seed seed  Optional seed value for testing (default: None)
+```
 
-if the user tries to use the -a | --advantage and -d | --disadvantage flags concurrently, the program will exit and produce an error.
+If the file is not valid: 
+```
+$ ./rolls.py inputs/foo.txt
+usage: rolls.py [-h] [-a | -d] [-s seed] FILE STR STR
+rolls.py: error: argument FILE: can't open 'inputs/foo.txt': [Errno 2] No such file or directory: 'inputs/foo.txt'
+```
+
+If the input for the roll_type or roll_for arguments isn't in the list of acceptable terms:
+```
+$ ./rolls.py inputs/cleric.txt const save
+usage: rolls.py [-h] [-a | -d] [-s seed] FILE STR STR
+rolls.py: error: argument STR: invalid choice: 'const' (choose from 'str', 'strength', 'dex', 'dexterity', 'con', 'constitution', 'int', 'intelligence', 'wis', 'wisdom', 'cha', 'charisma', 'acrobatics', 'acr', 'animal handling', 'anh', 'arcana', 'arc', 'athletics', 'ath', 'deception', 'dec', 'insight', 'ins', 'intimidation', 'intim', 'investigation', 'inv', 'medicine', 'med', 'nature', 'nat', 'perception', 'perc', 'performance', 'perf', 'persuasion', 'pers', 'religion', 'rel', 'sleight of hand', 'soh', 'stealth', 'ste', 'survival', 'sur')
+```
+
+If the user tries to use the -a | --advantage and -d | --disadvantage flags concurrently, the program will exit and produce an error.
+```
+$ ./rolls.py inputs/cleric.txt con save -a -d
+usage: rolls.py [-h] [-a | -d] [-s seed] FILE STR STR
+rolls.py: error: argument -d/--disadvantage: not allowed with argument -a/--advantage
+```
 
 If the values in the input file cannot be converted to integers, the program will exit with an error message prompting the user to correct the input file.
+```
+$ ./rolls.py inputs/bad.txt con save
+Non-integer value found in inputs/bad.txt.
+```
 
 ### Arguments
 There's quite a few flags for rolls.py, but those familiar with typical D&D terms should find them fairly intuitive. However, if a user is unfamiliar, a more thorough explanation for each argument might be useful.
@@ -60,10 +99,26 @@ There's quite a few flags for rolls.py, but those familiar with typical D&D term
 Finally, the wording and ordering of these arguments are deliberate. In a game, the player running the session might tell you to "make a stealth check with disadvantage" or to "roll a wisdom saving throw". This phrasing is very typical, and the ordering of the arguments is meant to mimic it. So, those examples could be entered as:
 
 ./rolls.py inputs/rogue.txt stealth check -d
+```
+$ ./rolls.py inputs/rogue.txt stealth check -d
+
+You made a Stealth check with disadvantage.
+
+Your total is 17.
+You rolled a 2 and a 16 on the d20 with a +15 modifier.
+```
 
 and
 
 ./rolls.py inputs/cleric.txt wisdom save
+```
+$ ./rolls.py inputs/cleric.txt wisdom save
+
+You made a Wisdom save.
+
+Your total is 11.
+You rolled a 2 on the d20 with a +9 modifier.
+```
 
 ## Author
 Jaclyn Cadogan
