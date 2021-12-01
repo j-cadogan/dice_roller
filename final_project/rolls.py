@@ -2,7 +2,8 @@
 """
 Author : jcadogan <jcadogan@localhost>
 Date   : 2021-11-28
-Purpose: Rock the Casbah
+Purpose: Roll saving throws, ability checks, and skill checks
+         according to Dungeons & Dragons 5th Edition rules.
 """
 
 import argparse
@@ -15,7 +16,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Get arguments',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     skills_and_abilities = ['str', 'strength', 'dex', 'dexterity', 'con',
